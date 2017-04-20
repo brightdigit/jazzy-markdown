@@ -8,6 +8,7 @@ find $DIR -name "*.html" -exec bash -c 'mv "$1" "${1%.html}".md' - '{}' \;
 
 rm -r -f $DIR/docsets
 rm -f $DIR/index.md
+rm -f $DIR/README.md
 
 echo "Fixing All URL Links..."
 
