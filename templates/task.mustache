@@ -3,6 +3,12 @@
 {{/name}}
 {{#items}}
 ### {{name}}
+{{#declaration}}
+{{{declaration}}}
+{{#other_language_declaration}}
+{{{other_language_declaration}}}
+{{/other_language_declaration}}
+{{/declaration}}
 {{#default_impl_abstract}}
 Default implementation
 {{/default_impl_abstract}}
@@ -19,13 +25,6 @@ Extension method
 #### Default Implementation
 {{{default_impl_abstract}}}
 {{/default_impl_abstract}}
-{{#declaration}}
-#### Declaration
-{{{declaration}}}
-{{#other_language_declaration}}
-{{{other_language_declaration}}}
-{{/other_language_declaration}}
-{{/declaration}}
 {{#parameters.count}}
 #### Parameters
 {{#parameters}}
