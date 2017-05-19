@@ -17,6 +17,7 @@ echo "\n\n## Categories\n" >> $README_OUT
 echo "Outputting All Type Categories..."
 
 find $docs_dir -type f -regex "$docs_dir/[^ /]*.md" -print | sed -e "s;$docs_dir;\.;g;s;[^/]*\/;;g;h;G;s;\n;]($docs_relative;;s;^;* [;g;s;$;);g;s;\.md];];g" >> $README_OUT
+find $docs_dir -type f -regex "$docs_dir/Other.*.md" -print | sed -e "s;$docs_dir;\.;g;s;[^/]*\/;;g;h;G;s;\n;]($docs_relative;;s;$;);g;s;\.md];];g;s; ;%20;g;s;^;* [;g" >> $README_OUT
 
 echo "\n## Types" >> $README_OUT
 for D in `find $docs_dir -type d -mindepth 1`
