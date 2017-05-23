@@ -26,3 +26,5 @@ do
 	echo "\n### $(basename $D)\n" >> $README_OUT
     find $D/*.md -print | sed -e "s;$docs_dir/.;\.;g;s;[^/]*\/;;g;h;G;s;\n;]($docs_relative$(basename $D)\/;;s;^;* [;g;s;$;);g;s;\.md];];g" >> $README_OUT
 done
+
+rm $docs_dir/.gitignore
