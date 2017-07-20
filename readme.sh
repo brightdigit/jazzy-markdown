@@ -13,9 +13,9 @@ echo "Prepending README Header..."
 
 cat $docs_header > $README_OUT
 
-echo "\n\n" >> $README_OUT
+#echo "\n\n" >> $README_OUT
 yes "#" | head -n $depth | tr -d '\n' >> $README_OUT
-echo " Categories\n" >> $README_OUT
+echo " Categories" >> $README_OUT
 
 echo "Outputting All Type Categories..."
 
@@ -26,15 +26,15 @@ rm -rf $docs_dir/js
 find $docs_dir -type f -regex "$docs_dir/[^ /]*.md" -print | sed -e "s;$docs_dir;\.;g;s;[^/]*\/;;g;h;G;s;\n;]($docs_relative;;s;^;* [;g;s;$;);g;s;\.md];];g" >> $README_OUT
 find $docs_dir -type f -regex "$docs_dir/Other.*.md" -print | sed -e "s;$docs_dir;\.;g;s;[^/]*\/;;g;h;G;s;\n;]($docs_relative;;s;$;);g;s;\.md];];g;s; ;%20;g;s;^;* [;g" >> $README_OUT
 
-echo "\n"  >> $README_OUT
+#echo "\n"  >> $README_OUT
 yes "#" | head -n $depth | tr -d '\n' >> $README_OUT
 echo " Types" >> $README_OUT
-for D in `find $docs_dir -type d -mindepth 1`
+for D in `find $docs_dir -type d -maxdepth 1 -mindepth 1`
 do
 	echo "Outputting All $(basename $D)..."
-	echo "\n"  >> $README_OUT
+	#echo "\n"  >> $README_OUT
 	yes "#" | head -n $((depth+1)) | tr -d '\n' >> $README_OUT
-	echo " $(basename $D)\n" >> $README_OUT
+	echo " $(basename $D)" >> $README_OUT
     find $D/*.md -print | sed -e "s;$docs_dir/.;\.;g;s;[^/]*\/;;g;h;G;s;\n;]($docs_relative$(basename $D)\/;;s;^;* [;g;s;$;);g;s;\.md];];g" >> $README_OUT
 done
 
