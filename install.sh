@@ -26,7 +26,12 @@ main() {
     exit 1
   }
 
-  cp $JMD/build-docs.sh .
+  env cp $JMD/build-docs.sh JMD/.jazzy.yml . || { 
+    printf "Error: Could not copy nessecary files to setup project."
+    exit 1
+  }
+
+  printf "Be sure to add the following line to your .gitignore:\n.tmp"
 }
 
 main $1
