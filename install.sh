@@ -13,8 +13,13 @@ main() {
     exit 1
   }
 
+  CURRENT_BRANCH=`git symbolic-ref -q --short HEAD || git describe --tags --exact-match`
+  DEFAULT_BRANCH=${CURRENT_BRANCH:-master}
+  BRANCH=${1:-$DEFAULT_BRANCH}
+
+  echo $BRANCH
   printf "${BLUE}Cloning Oh My Jazzy Markdown...${NORMAL}\n"
-  env git clone --depth=1 https://github.com/brightdigit/jazzy-markdown.git $JMD || {
+  env git clone --depth=1  -b $BRANCH https://github.com/brightdigit/jazzy-markdown.git $JMD || {
     printf "Error: git clone of jazzy-markdown repo failed\n"
     exit 1
   }
