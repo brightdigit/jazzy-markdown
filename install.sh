@@ -24,7 +24,7 @@ main() {
   }
 
   printf "${BLUE}Setting Up Configuration...${NORMAL}\n"
-  env cp $JMD/build-docs.sh $JMD/.jazzy.yml . || { 
+  env cp $JMD/build-docs.sh $JMD/.jazzy.yml $JMD/docs-header.md . || { 
     printf "Error: Could not copy nessecary files to setup project."
     exit 1
   }
