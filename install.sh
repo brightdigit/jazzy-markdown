@@ -13,6 +13,8 @@ main() {
     exit 1
   }
 
+  echo $1
+
   CURRENT_BRANCH=`git symbolic-ref -q --short HEAD || git describe --tags --exact-match`
   DEFAULT_BRANCH=${CURRENT_BRANCH:-master}
   BRANCH=${1:-$DEFAULT_BRANCH}
@@ -27,4 +29,4 @@ main() {
   cp $JMD/build-docs.sh .
 }
 
-main
+main $1
